@@ -6,7 +6,7 @@
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 
-function (wget) {
+function wget () {
     : ${DEBUG:=0}
     local URL=$1
     local tag="Connection: close"
