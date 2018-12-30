@@ -6,7 +6,7 @@
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 
-function __wget () {
+function __wget {
   read proto server path <<<$(echo ${1//// })
   DOC=/${path// //}
   HOST=${server//:*}
