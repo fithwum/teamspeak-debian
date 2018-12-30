@@ -5,7 +5,7 @@ MAINTAINER fithwum
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-debian/master/files/Install_Script.sh
 
 # Install dependencies and folder creation
-RUN apk update && apk upgrade && apk add --no-cache ca-certificates libstdc++ su-exec bash-completion tar \
+RUN apt-get install wget ca-certificates libstdc++ su-exec bash-completion tar \
 	&& mkdir -p -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
