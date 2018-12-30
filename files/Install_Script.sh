@@ -6,6 +6,8 @@
 TS_VERSION="3.5.1"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 
+apt-get install -y wget
+
 # Main Install.
 if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	then
