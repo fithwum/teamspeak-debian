@@ -3,8 +3,6 @@ MAINTAINER fithwum
 
 # URL's for files
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-debian/master/files/Install_Script.sh
-ARG DB_FILE=https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3db_mariadb.ini
-ARG INI_FILE=https://raw.githubusercontent.com/fithwum/files-for-dockers/master/files/ts3server.ini
 
 # Install dependencies and folder creation
 RUN apt-get install libstdc++ curl \
@@ -12,8 +10,6 @@ RUN apt-get install libstdc++ curl \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles
 ADD "${INSTALL_SCRIPT}" /ts3temp
-ADD "${DB_FILE}" /ts3temp/inifiles
-ADD "${INI_FILE}" /ts3temp/inifiles
 RUN chmod +x -v /ts3temp/Install_Script.sh
 
 # directory where data is stored
