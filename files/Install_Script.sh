@@ -50,7 +50,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 			echo "INFO ! ts3db_mariadb.ini found ... will not download."
 		else
 			echo "WARNING ! ts3db_mariadb.ini not found ... will download new copy."
-				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/scripts/ts3db_mariadb.ini -O /ts3temp/inifiles/ts3db_mariadb.ini
+				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3db_mariadb.ini -O /ts3temp/inifiles/ts3db_mariadb.ini
 				cp /ts3temp/inifiles/ts3db_mariadb.ini /ts3server/
 				rm -frv /ts3temp/inifiles/ts3db_mariadb.ini
 	fi
@@ -59,7 +59,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 			echo "INFO ! ts3server.ini found ... will not download."
 		else
 			echo "WARNING ! ts3server.ini not found ... will download new copy."
-				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/scripts/ts3server.ini -O /ts3temp/inifiles/ts3server.ini
+				wget https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3server.ini -O /ts3temp/inifiles/ts3server.ini
 				cp /ts3temp/inifiles/ts3server.ini /ts3server/
 				rm -frv /ts3temp/inifiles/ts3server.ini
 	fi
