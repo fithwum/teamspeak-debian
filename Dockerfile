@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y wget libstdc++ tar bzip2 && apt-get -y 
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
-	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles
-ADD "${INSTALL_SCRIPT}" /ts3temp
-RUN chmod +x -v /ts3temp/Install_Script.sh
+	&& wget "${INSTALL_SCRIPT}" -O /ts3temp/Install_Script.sh \
+	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
+	&& chmod +x -v /ts3temp/Install_Script.sh
 
 # directory where data is stored
 VOLUME /ts3server
