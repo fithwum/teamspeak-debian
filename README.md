@@ -1,4 +1,4 @@
-# teamspeak3 for UNRAID
+# teamspeak3 docker
 
 debian based teamspeak docker
 
