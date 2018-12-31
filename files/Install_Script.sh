@@ -10,7 +10,6 @@ CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
 if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
-		# cd /ts3server
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 		exit
 	else
@@ -23,10 +22,13 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 		else
 			echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 				wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_amd64-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
+				sleep 2
 				tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
+				sleep 2
 				rm -frv /ts3temp/serverfiles/ts3server_startscript.sh
 				rm -frv /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 				cp -uR /ts3temp/serverfiles/. /ts3server/
+				sleep 2
 				mv /ts3server/redist/libmariadb.so.2 /ts3server/libmariadb.so.2
 				mv /ts3server/CHANGELOG ${CHANGELOG}
 				rm -fr /ts3temp/serverfiles/*
@@ -72,7 +74,6 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 
 # run the server.
 	echo "INFO ! Starting ts3server ${TS_VERSION} ..."
-	# cd /ts3server
 	exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
 fi
 exit
