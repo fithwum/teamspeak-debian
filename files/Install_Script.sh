@@ -24,7 +24,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 			echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
 				wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_amd64-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 				sleep 2m
-				tar -jxvf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
+				tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
 				sleep 2m
 				rm -frv /ts3temp/serverfiles/ts3server_startscript.sh
 				rm -frv /ts3temp/ts3server_${TS_VERSION}.tar.bz2
