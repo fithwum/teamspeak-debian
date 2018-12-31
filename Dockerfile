@@ -5,7 +5,7 @@ MAINTAINER fithwum
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-debian/master/files/Install_Script.sh
 
 # Install dependencies and folder creation
-RUN add-get-repository 'deb http://se.archive.ubuntu.com/ubuntu/' && apt-get install -y wget libstdc++ tar \
+RUN apt-get search wget && apt-get install -y wget libstdc++ tar \
 	&& mkdir -p -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chown 99:100 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles
