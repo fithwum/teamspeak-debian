@@ -3,11 +3,14 @@
 # All rights reserved
 
 # Teamspeak server version check.
-TS_VERSION="3.5.1"
+TS_VERSION="3.5.0"
 CHANGELOG=/ts3server/CHANGELOG_${TS_VERSION}
+CHANGELOG_OLD=find ../ts3server -type f -iname "CHANGELOG*"
+CHANGELOG_NEW=CHANGELOG_${TS_VERSION}
+VERSION_CHECK="${CHANGELOG_OLD}"
 
 # Main Install.
-if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
+if [ "${VERSION_CHECK}" == "${CHANGELOG_NEW}" ]
 	then
 		echo "INFO ! ts3server ${TS_VERSION} files found ... running current docker."
 		exec /ts3server/ts3server_minimal_runscript.sh inifile=ts3server.ini start
@@ -21,6 +24,7 @@ if [ "/ts3server/CHANGELOG_*" == "/ts3server/CHANGELOG_${TS_VERSION}" ]
 			echo "INFO ! ts3server is ${TS_VERSION} ... checking ini/sh files before running current docker."
 		else
 			echo "WARNING ! ts3server is out of date ... will download new copy from teamspeak."
+				rm -frv /ts3server/${CHANGELOG_OLD}
 				wget https://files.teamspeak-services.com/releases/server/${TS_VERSION}/teamspeak3-server_linux_amd64-${TS_VERSION}.tar.bz2 -O /ts3temp/ts3server_${TS_VERSION}.tar.bz2
 				sleep 2
 				tar -xf /ts3temp/ts3server_${TS_VERSION}.tar.bz2 -C /ts3temp/serverfiles --strip-components=1
