@@ -1,11 +1,11 @@
-FROM debian:latest
+FROM fithwum/debian-base
 MAINTAINER fithwum
 
 # URL's for files
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak-debian/master/files/Install_Script.sh
 
 # Install dependencies and folder creation
-RUN apt-get update && apt-get install -y wget libstdc++ tar bzip2 && apt-get -y clean && apt-get -y autoclean \
+RUN apt-get install libstdc++ && apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
 	&& chmod 777 -R -v /ts3server /ts3temp /ts3temp/inifiles /ts3temp/serverfiles \
@@ -20,4 +20,4 @@ VOLUME /ts3server
 EXPOSE 9987/udp 10011/tcp 30033/tcp
 
 # Run command
-CMD [ "/bin/sh", "/ts3temp/Install_Script.sh" ]
+CMD [ "/bin/bash", "./ts3temp/Install_Script.sh" ]
