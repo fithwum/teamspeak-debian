@@ -1,4 +1,4 @@
-FROM fithwum/debian-base
+FROM fithwum/debian-base:stretch
 MAINTAINER fithwum
 
 # URL's for files
